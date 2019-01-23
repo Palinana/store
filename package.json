@@ -1,0 +1,47 @@
+{
+  "name": "nova",
+  "version": "1.0.0",
+  "description": "e commerce app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build-client": "webpack",
+    "build-client-watch": "webpack -w",
+    "server": "nodemon server/index.js",
+    "client": "cd client && npm run start",
+    "start-dev": "webpack -w & nodemon server/index.js",
+    "seed": "node script/seed.js",
+    "test": "mocha ./server/**/*.spec.js ./server/**/**/*.spec.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "Palina Pasiukevich",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "concurrently": "^3.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "date-fns": "^1.29.0",
+    "express": "^4.16.3",
+    "history": "^4.7.2",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^4.37.10",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "supertest": "^3.0.0"
+  }
+}
