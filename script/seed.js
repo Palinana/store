@@ -28,7 +28,7 @@ async function seed () {
       name: 'Sepli Accent Chair', price: 769.99, quantity: 14, 
       description: 'Inspired by innovative avant garde architecture, our designers wrapped curved forms to create the Thea Chair is unique approach to seating. The two-toned upholstery overlaps in subtly contrasting fabrics for a singularly modern point of view.',  
       categoryId: 1, width: 34.50, height: 30.50,
-      color: 'Yellow', image: '/images/SepliAccentChair.jpg '
+      color: 'Gray', image: '/images/SepliAccentChair.jpg '
     }),
     Product.create({ 
       name: 'Echo Chair', price: 939.99, quantity: 5, 
@@ -41,6 +41,24 @@ async function seed () {
       description: 'Shapely curves, a gentle recline and adjust-right cushions invite the lost art of unwinding. A sculptural powder-coated steel base sets up the striking profile. Steel and bent plywood construction with light all-over padding, Reversible seat and back cushions filled with high resiliency foam with feather-down wrap, High resiliency foam cushions with feather down wrap provide a mix of firm support and comfort, and with use will take on a more casual appearance over time, Feather-down filled lumbar pillow included.',  
       categoryId: 1, width: 32.50, height: 33.50,
       color: 'Green', image: '/images/WrennChair.jpg '
+    }),
+    Product.create({ 
+      name: 'Stark Chair', price: 1299.99, quantity: 6, 
+      description: 'The sophisticated profile of the Tyler Leather Square Arm Recliner features details like end caps on the arms and square legs that complement the graphic frame. This piece mixes well with other styles while adding a clean, updated look to a room.',  
+      categoryId: 1, width: 29, height: 34,
+      color: 'Orange', image: '/images/StarkChair.jpg '
+    }),
+    Product.create({ 
+      name: 'Cloud LN5 Lounge Chair', price: 899.99, quantity: 2, 
+      description: 'Designed to be spacious and expansive, Italian-born, Swedish-based designer Luca Nichetto wanted to minimise anything voluminous and accentuate the look and feel of lightness. Seen in this new version of Cloud Sofas with a high back. The secret to Cloud’s truly hygge sensation involves feather and foamfilled seat cushi.',  
+      categoryId: 1, width: 32.50, height: 36,
+      color: 'Gray', image: '/images/CloudLN5LoungeChair.jpg '
+    }),
+    Product.create({ 
+      name: 'Adler Maxime Club Chair', price: 999.99, quantity: 6,
+      description: 'An icon of the Modernist era, this dining chair was originally designed by Warren Platner. Both elegant and whimsical, the stainless steel wire base with gold finish was designed to resemble a shiny sheaf of wheat. The design provides not just a unique look, but also full support and stability for the seating shell. The wool-blend upholstered foam cushions add comfort to this sculptural piece while also giving visual contrast to the shiny metal frame.',
+      categoryId: 1, width: 32.50, height: 30.50,
+      color: 'Green', image: '/images/AdlerMaximeClubChair.jpg '
     }),
     Product.create({ 
       name: 'Avery Sofa', price: 799.99, quantity: 12, 
@@ -70,7 +88,7 @@ async function seed () {
       name: 'Janae Coffee Table', price: 479.99, quantity: 2, 
       description: 'This coffee table brings an elegant touch to the living space with its dramatic, round shape. Featuring a tabletop of bold artistic expression, this is the perfect centerpiece for any living setting. Personalize this living room essential by selecting your wood and leg finish of choice for a piece that is uniquely yours..',  
       categoryId: 3, width: 34.50, height: 31,
-      color: 'Blue', image: '/images/JanaeCoffee able.jpg '
+      color: 'Blue', image: '/images/JanaeCoffeeTable.jpg '
     }),
     Product.create({ 
       name: 'Urchin Flush Mount Lighting', price: 199.99, quantity: 2, 

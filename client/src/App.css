@@ -30,3 +30,33 @@
     transform: rotate(360deg);
   }
 }
+#thumbnails {
+  width: 100%; 
+  height: 300px;
+  object-fit: cover;
+}
+
+.card {
+  width: 18rem !important;
+  border: none;
+  /* background: red; */
+}
+.product-name {
+  font-size: 18px;
+  transform: uppercase;
+  text-align: center;
+}
+.product-price {
+  font-size: 20px;
+  text-align: center;
+}
+
+.cart-item_total {
+  position: absolute;
+  top: 0;
+  left: 90%;
+}
+
+.top-nav li:last-child {
+  position: relative !important;
+}
