@@ -26,13 +26,18 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "chai": "^3.5.0",
     "date-fns": "^1.29.0",
     "express": "^4.16.3",
     "history": "^4.7.2",
+    "mocha": "^3.3.0",
     "morgan": "^1.9.0",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0",
     "path": "^0.12.7",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
+    "prop-types": "^15.5.8",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
@@ -40,8 +45,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sequelize": "^4.37.10",
-    "chai": "^3.5.0",
-    "mocha": "^3.3.0",
+    "stripe": "^5.8.0",
     "supertest": "^3.0.0"
   }
 }
