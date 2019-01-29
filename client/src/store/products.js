@@ -6,7 +6,6 @@ import history from '../history';
  */
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const DELETE_PRODUCT = 'DELETE_PRODUCT'
-
 /**
  * ACTION CREATORS
  */
@@ -22,7 +21,7 @@ export const fetchProducts = () =>
       .then(res =>
         dispatch(getProducts(res.data)))
       .catch(err => console.error(err))
-    
+      
 export const destroyProduct = (id) =>
   dispatch =>
     axios.delete(`/api/products/${id}`)
