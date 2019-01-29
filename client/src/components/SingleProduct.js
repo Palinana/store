@@ -26,19 +26,18 @@ class SingleProduct extends Component {
         addToCart(this.props.product.id, +this.state.quantity, this.props.product.price)
         
         this.props.updateCartSize(getCartSize());
-        //print Success !!! use react library
     }
 
     render() {
         const { product } = this.props;
 
         return (
-            <div className="row">
+            <div className="row main-view">
                 <Sidebar />
-                <div className="col-md-9">
-                    <div className="row">
+                <div className="col-md-10">
+                    <div className="row product-page">
                         <div className="col-md-6">
-                            <img src={product.image} alt={product.name}/>
+                            <img src={product.image} alt={product.name} className="product-image"/>
                         </div>
                         
                         <div className="col-md-6">

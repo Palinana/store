@@ -37,6 +37,12 @@ async function seed () {
       color: 'Grey', image: '/images/EchoChair.jpg '
     }),
     Product.create({ 
+      name: 'Omega Lounge Chair', price: 699.99, quantity: 2, 
+      description: 'Cold-injected polyurethane foam with inner steel profile frame and special polyurethane inserts for back support. Covering material coupled with polyester padding.Shaped seat made of non-deformable polyurethane foam and wrapped with polyester wadding.',  
+      categoryId: 1, width: 34.50, height: 32.50,
+      color: 'Yellow', image: '/images/OmegaLoungeChair.jpg '
+    }),
+    Product.create({ 
       name: 'Wrenn Chair', price: 979.99, quantity: 12, 
       description: 'Shapely curves, a gentle recline and adjust-right cushions invite the lost art of unwinding. A sculptural powder-coated steel base sets up the striking profile. Steel and bent plywood construction with light all-over padding, Reversible seat and back cushions filled with high resiliency foam with feather-down wrap, High resiliency foam cushions with feather down wrap provide a mix of firm support and comfort, and with use will take on a more casual appearance over time, Feather-down filled lumbar pillow included.',  
       categoryId: 1, width: 32.50, height: 33.50,
@@ -89,6 +95,12 @@ async function seed () {
       description: 'This coffee table brings an elegant touch to the living space with its dramatic, round shape. Featuring a tabletop of bold artistic expression, this is the perfect centerpiece for any living setting. Personalize this living room essential by selecting your wood and leg finish of choice for a piece that is uniquely yours..',  
       categoryId: 3, width: 34.50, height: 31,
       color: 'Blue', image: '/images/JanaeCoffeeTable.jpg '
+    }),
+    Product.create({ 
+      name: 'Showtime Coffee Table', price: 1299.99, quantity: 4, 
+      description: 'This coffee table brings an elegant touch to the living space with its dramatic, round shape. Featuring a tabletop of bold artistic expression, this is the perfect centerpiece for any living setting. Personalize this living room essential by selecting your wood and leg finish of choice for a piece that is uniquely yours..',  
+      categoryId: 3, width: 37.50, height: 29,
+      color: 'Brown', image: '/images/ShowtimeCoffeeTable.jpg '
     }),
     Product.create({ 
       name: 'Urchin Flush Mount Lighting', price: 199.99, quantity: 2, 
