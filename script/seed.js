@@ -34,7 +34,7 @@ async function seed () {
       name: 'Echo Chair', price: 939.99, quantity: 5, 
       description: 'The Echo chair looks good from every angle, but its tilted seat creates a profile that can’t be missed and immediately adds to the design of a room. Its plush seat contrasts with its black steal supporting base that gives it chic visual contrast.',  
       categoryId: 1, width: 34.50, height: 30.50,
-      color: 'Grey', image: '/images/EchoChair.jpg '
+      color: 'Gray', image: '/images/EchoChair.jpg '
     }),
     Product.create({ 
       name: 'Omega Lounge Chair', price: 699.99, quantity: 2, 
@@ -118,7 +118,7 @@ async function seed () {
       name: 'Visual Comfort Lighting', price: 899.99, quantity: 2, 
       description: 'This Lighting from the E.F. Chapman Quincy collection by Visual Comfort will enhance your home with a perfect mix of form and function.',  
       categoryId: 4, width: 30, height: 30,
-      color: 'Gold', image: '/images/VisualComfortLighting.jpg '
+      color: 'Yellow', image: '/images/VisualComfortLighting.jpg '
     })
     
   ])
