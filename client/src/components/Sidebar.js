@@ -13,19 +13,35 @@ const Sidebar = (props) => (
                         props.categories.map(category => {
                         return (
                             <li className="sidebar-item" key={category.id}>  
-                                <Link to={`/categories/${category.id}`} className="sidebar-item__link"> {category.name}</Link>
+                                <Link to={`/categories/${category.id}`} className="sidebar-item__link">{category.name}</Link>
+                            </li>
+                        )})
+                    }
+                </ul>
+                <div className="sidebar-header">
+                    <h3 className="sidebar-header__title">Colors</h3>
+                </div>
+                <ul className="list-unstyled components">
+                    {
+                        props.colors.map((color, ind) => {
+                        return (
+                            <li className="sidebar-item__link" key={ind} onClick={() => {props.handleClick(color)}}>
+                                <span className="color-circle" id={color}></span>{color}
                             </li>
                         )})
                     }
                 </ul>
             </nav>
-    </div>
+    </div> 
 )
 
 const mapState = state => {
-  return {
-    categories: state.categories
-  }
+    const uniqueColors = Array.from(new Set(state.products.map(elem => elem.color)))
+
+    return {
+        categories: state.categories,
+        colors: uniqueColors.sort()
+    }
 }
 
 export default connect(mapState)(Sidebar)

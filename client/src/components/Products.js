@@ -12,12 +12,15 @@ class Products extends Component {
         this.state = {
             search: '',
             isDirty: false,
-            limit: 8
+            limit: 8,
+            color: ''
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.searchingFor = this.searchingFor.bind(this)
         this.onLoadMore = this.onLoadMore.bind(this)
+        this.filterByColor = this.filterByColor.bind(this)
     }
     
     searchingFor(search){
@@ -32,23 +35,36 @@ class Products extends Component {
         });
     }
 
+    filterByColor(color, arr) {
+        return arr.filter(elem => elem.color === color)
+    }
+
+    handleClick (value) {
+        this.setState({ color: value })
+    }
+
     handleChange (event) {
         this.setState({ search: event.target.value })
     }
 
-    handleSubmit(event) {
+    handleSubmit (event) {
         event.preventDefault();        
     }
 
     render() {
-        const { products } = this.props;
-        const { limit } = this.state;
+        let { products } = this.props; 
+        const { limit, color } = this.state;
         let searchLength = this.state.search.length;
         let isDirty = searchLength ? true : false;
+
+        // filter by color
+        if(color) {
+            products = this.filterByColor(color, products)
+        }
         
         return (
             <div className="row main-view">
-                <Sidebar />
+                <Sidebar color={this.state.color} handleClick={this.handleClick}/>
                 <div className="col-md-10">  
                     <div className="row product-search">
                         <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>

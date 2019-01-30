@@ -140,6 +140,28 @@ body {
   text-decoration: none;
   color: #636363e6;
 }
+
+.color-circle {
+  float: left;
+  background: antiquewhite;
+  height: 20px;
+  width: 20px;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+#Black { background: #000000 !important;}
+#Blue { background: #a4bfd8 !important;}
+#Brown { background: #725342 !important;}
+#Gray { background: #979798 !important;}
+#Green { background: #73907f !important;}
+#Orange { background: #e6b772 !important;}
+#Pink { background: #e4b5b5 !important;}
+#Red { background: #bd4545 !important;}
+#Yellow { background: #efe8a8 !important;}
+
+
+
 .search {
   flex: 0 0 40%; 
   display: flex; 
