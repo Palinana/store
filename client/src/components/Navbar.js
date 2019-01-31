@@ -33,7 +33,6 @@ const Navbar = ({ handleClick, isLoggedIn, cartSize }) => (
                         <svg className="cart__icon">
                             <use xlinkHref="/images/sprite.svg#icon-shopping-cart"></use>
                         </svg>
-                            {/* <img id='cart-img' src='/images/shopping-cart.png' alt="shopping cart" className="nav-link"/> */}
                             <span className="cart-item_total">{cartSize}</span>
                         </Link>
                     </li>

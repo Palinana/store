@@ -73,6 +73,12 @@ async function seed () {
       color: 'Gray', image: '/images/AverySofa.jpg '
     }),
     Product.create({ 
+      name: 'Alba Sofa', price: 1199.99, quantity: 18, 
+      description: 'The curved arms and back soften the frame and add feminine flair to this traditionally modern silhouette. Gracefully poised on four steel legs that feature a matte black finish and antique brass cap.',  
+      categoryId: 2, width: 78.50, height: 32.50,
+      color: 'Green', image: '/images/AlbaSofa.jpg '
+    }),
+    Product.create({ 
       name: 'Cuomhouse Standard Sofa', price: 999.99, quantity: 3, 
       description: 'Set on gold stainless steel legs, this super comfortable sofa comes in rich gray and rose velvet options. Features removable seat and back cushions as well as two matching throw pillows.',  
       categoryId: 2, width: 59.50, height: 34.50,
@@ -92,13 +98,19 @@ async function seed () {
     }),
     Product.create({ 
       name: 'Janae Coffee Table', price: 479.99, quantity: 2, 
-      description: 'This coffee table brings an elegant touch to the living space with its dramatic, round shape. Featuring a tabletop of bold artistic expression, this is the perfect centerpiece for any living setting. Personalize this living room essential by selecting your wood and leg finish of choice for a piece that is uniquely yours..',  
+      description: 'This coffee table brings an elegant touch to the living space with its dramatic, round shape. Featuring a tabletop of bold artistic expression, this is the perfect centerpiece for any living setting. Personalize this living room essential by selecting your wood and leg finish of choice for a piece that is uniquely yours.',  
       categoryId: 3, width: 34.50, height: 31,
       color: 'Blue', image: '/images/JanaeCoffeeTable.jpg '
     }),
     Product.create({ 
+      name: 'Lizbeth Coffee Table', price: 479.99, quantity: 3, 
+      description: 'Blend your modern aesthetic with industrial silhouettes for a luxe look with an edge. This round cocktail table features a white marble top on a black five-leg base.',  
+      categoryId: 3, width: 36, height: 28.50,
+      color: 'Black', image: '/images/LizbethCoffeeTable.jpg '
+    }),
+    Product.create({ 
       name: 'Showtime Coffee Table', price: 1299.99, quantity: 4, 
-      description: 'This coffee table brings an elegant touch to the living space with its dramatic, round shape. Featuring a tabletop of bold artistic expression, this is the perfect centerpiece for any living setting. Personalize this living room essential by selecting your wood and leg finish of choice for a piece that is uniquely yours..',  
+      description: 'This coffee table brings an elegant touch to the living space with its dramatic, round shape. Featuring a tabletop of bold artistic expression, this is the perfect centerpiece for any living setting. Personalize this living room essential by selecting your wood and leg finish of choice for a piece that is uniquely yours.',  
       categoryId: 3, width: 37.50, height: 29,
       color: 'Brown', image: '/images/ShowtimeCoffeeTable.jpg '
     }),
