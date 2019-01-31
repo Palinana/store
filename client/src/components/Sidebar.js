@@ -25,8 +25,11 @@ const Sidebar = (props) => (
                     {
                         props.colors.map((color, ind) => {
                         return (
-                            <li className="sidebar-item__link" key={ind} onClick={() => {props.handleClick(color)}}>
-                                <span className="color-circle" id={color}></span>{color}
+                            <li className="sidebar-item__link" key={ind} >
+                                <span className="sidebar-color__circle" id={color} onClick={() => {props.handleClick(color, ind)}}></span>{color}
+                                    <svg className={props.addCloseButton === ind ? "sidebar__icon" : "sidebar__icon-removed" }  onClick={() => {props.handleClick('', -1)}}>
+                                        <use xlinkHref="/images/sprite.svg#icon-block"></use>
+                                    </svg> 
                             </li>
                         )})
                     }

@@ -13,7 +13,8 @@ class Products extends Component {
             search: '',
             isDirty: false,
             limit: 8,
-            color: ''
+            color: '',
+            addCloseButton: null
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -39,8 +40,12 @@ class Products extends Component {
         return arr.filter(elem => elem.color === color)
     }
 
-    handleClick (value) {
+    handleClick (value, id) {
+        //if id doesn't belogn to a color, set it to null, otherwise add close button to current color
+        if (id === -1) this.setState({ addCloseButton: id })
+        if (value) this.setState({ addCloseButton: id })
         this.setState({ color: value })
+        console.log('this.state.addCloseButton ', this.state.addCloseButton)
     }
 
     handleChange (event) {
@@ -64,7 +69,7 @@ class Products extends Component {
         
         return (
             <div className="row main-view">
-                <Sidebar color={this.state.color} handleClick={this.handleClick}/>
+                <Sidebar color={this.state.color} handleClick={this.handleClick} addCloseButton={this.state.addCloseButton}/>
                 <div className="col-md-10">  
                     <div className="row product-search">
                         <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
