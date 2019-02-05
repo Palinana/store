@@ -36,17 +36,17 @@ class SingleProduct extends Component {
                 <Sidebar />
                 <div className="col-md-10">
                     <div className="row product-page">
-                        <div className="col-md-6">
+                        <div className="col-md-6 product-section__image">
                             <img src={product.image} alt={product.name} className="product-image"/>
                         </div>
                         
                         <div className="col-md-6">
+                            <h3 className="product-info__name">{product.name}</h3>
                             <h4>${product.price}</h4>
-                            <h3>{product.name}</h3>
-                            <p id='product-description'>{product.description}</p>
+                            <p className="product-info__description" id='product-description'>{product.description}</p>
                        
                             <div id="details">
-                                <input type="number" name="quantity" value={this.state.quantity} onChange={this.handleChange} min="1" max={product.quantity}/>
+                                <input className="form-control product-info__quantity" type="number" name="quantity" value={this.state.quantity} onChange={this.handleChange} min="1" max={product.quantity}/>
                                 {
                                     product.quantity ? 
                                         <Link
@@ -54,7 +54,7 @@ class SingleProduct extends Component {
                                             pathname: '/success',
                                             state: product}}
                                             onClick={this.handleCartSubmit}
-                                            ><button>Add to Cart</button>
+                                            ><button className="product-add">Add to Cart</button>
                                         </Link>
                                     : <h3>SOLD OUT</h3> 
                                 }

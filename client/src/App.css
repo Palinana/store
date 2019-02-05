@@ -267,7 +267,7 @@ body {
   border: none;
   letter-spacing: 1px;
   margin: 20px;
-  color: #000;
+  color: #fff;
   background: #b7c1bb;
   /* background-color: #E8E2D2; */
 }
@@ -295,7 +295,35 @@ body {
   width: 80%;
 }
 
+.product-info__name {
+  font-size: 3rem !important;
+  font-weight: 300 !important;
+}
+
+.product-info__description {
+  margin-top: 25px;
+}
+
+.product-info__quantity {
+  display: inline;
+  width: 10% !important;
+}
+
 .product-add {
+  padding: 10px 45px;
+  font-size: 15px;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  letter-spacing: 1px;
+  margin: 20px;
+  color: #fffafa;
   background: #bf8474;
   border: none;
+}
+
+.product-add:hover,  .product-add:active, .product-add:focus{
+  background: #a26858;
+  outline: none !important;
+  border: none !important;
 }
