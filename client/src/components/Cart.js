@@ -45,61 +45,89 @@ class Cart extends Component {
         }
 
         return (
-        <div className="checkout">
-            <h3>Cart</h3>
-            {
-            this.state.cart.length
-                ? this.state.cart.map(item => {
-                const product = products.find(p => p.id === item.productId)
-                return (
-                    <div className='cart-item' key={product.id}>
-                    <div className="product-item">
-                        <Link to={`/products/${product.id}`}>
-                        <img src={product.image} alt={product.name}/>
-                        <h4>${product.price}</h4>
-                        <h3>{product.name}</h3>
-                        </Link>
-                    </div>
-                    <div id='quantity'>
-                        {
-                        this.state.editingProductId === product.id
-                            ? <div>
-                            <h3>Qty: <input type="number" name="quantity" value={this.state.currentEditQuantity} onChange={this.updateEditQuantity} min="1" max={product.quantity} /></h3>
-                            <button onClick={this.handleUpdate(product.id)}>Update Quantity</button>
-                            </div>
-                            : <div>
-                            <h3>Qty: {item.quantity}</h3>
-                            {
-                                !this.state.editingProductId &&
-                                <button onClick={this.handleEdit(product.id, item.quantity)}>Edit Quantity</button>
-                            }
-                            </div>
-                        }
-                        {
-                        item.quantity
-                            ? <button onClick={this.handleDelete(product.id)}>Delete Item</button>
-                            : <h3 id='sold-out'>SOLD OUT</h3>
-                        }
-                    </div>
-                    </div>
-                )
-                })
-                : <small>cart is empty</small>
-            }
-            {
-            +this.state.total
-                ? <div className='cart-item total'>
-                <h3>Total:</h3>
-                <h3> ${this.state.total}</h3>
+        <div className="row">
+            <div class="col-xs-12 mx-auto">
+                <div class="page-header">
+                    <h1>Your Cart</h1>
                 </div>
-                : null
-            }
-            {
-            this.state.cart.length
-                ? <Link to={{ pathname: '/checkout/shipping', state: { cart: this.state.cart, total: this.state.total } }}><button>Proceed to Shipping</button></Link>
-                : null
-            }
-        </div>
+                {
+                this.state.cart.length ?
+                    
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.state.cart.map(item => {
+                            const product = products.find(p => p.id === item.productId)
+                                return (
+                                    <tr className='cart-item' key={product.id}>
+                                        
+                                        <td className="product-item">
+                                            <img src={product.image} alt={product.name} className="cart-item__image"/>
+                                            <Link to={`/products/${product.id}`} className="cart-item__name">{product.name} </Link>
+                                        </td>
+                                        
+                                        <td>${product.price}</td>
+
+                                        <td id=''>
+                                            {
+                                            this.state.editingProductId === product.id
+                                                ? <div>
+                                                <h3>Qty: <input type="number" name="quantity" value={this.state.currentEditQuantity} onChange={this.updateEditQuantity} min="1" max={product.quantity} /></h3>
+                                                <button onClick={this.handleUpdate(product.id)}>Update Quantity</button>
+                                                </div>
+                                                : <div>
+                                                <h3>Qty: {item.quantity}</h3>
+                                                {
+                                                    !this.state.editingProductId &&
+                                                    <button onClick={this.handleEdit(product.id, item.quantity)}>Edit Quantity</button>
+                                                }
+                                                </div>
+                                            }
+                                            
+                                        </td>
+                                        <td>${(item.quantity * product.price).toFixed(2)}</td>
+                                        <td>
+                                            {
+                                                item.quantity
+                                                    ? <button onClick={this.handleDelete(product.id)}>Delete Item</button>
+                                                    : <h3 id='sold-out'>SOLD OUT</h3>
+                                            }
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>    
+                : <small>cart is empty</small>
+                }
+                <div class="row justify-content-end">
+                    {
+                        +this.state.total
+                            ? <div className='cart-checkout__total'>
+                                <h3>Total:</h3>
+                                <h3> ${this.state.total}</h3>
+                            </div>
+                            : null
+                        }
+                </div>
+                {
+                    this.state.cart.length ? 
+                        <div className="row justify-content-end cart-checkout">
+                            <Link to={{ pathname: '/checkout/shipping', state: { cart: this.state.cart, total: this.state.total } }}><button>Proceed to Shipping</button></Link>
+                        </div>: null
+                }
+            </div>
+            </div>
         )
     }
 }
