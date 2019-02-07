@@ -294,6 +294,7 @@ body {
 .cart-item__name {
   margin-left: 20px;
   color: #7b7b7be6;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -304,6 +305,8 @@ body {
 
 .cart-item__quantity {
   font-size: 15px !important;
+  display: inline-block !important;
+  margin-right: 10px !important;
 }
 
 .cart-item__delete {
@@ -312,6 +315,34 @@ body {
 
 .cart-items:last-child {
   border-bottom: 1px solid #dee2e6;
+}
+
+.cart-item__edit {
+  text-align: center;
+}
+
+.cart-item__description {
+  max-width: 720px;
+  max-height: 104px;
+  font-weight: 100;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  padding: 5px 20px;
+}
+
+.edit-icon {
+  width: 18px;
+  height: 20px;
+}
+
+.cart-item__update-btn {
+  font-size: 13px;
+  border-radius: 100px;
+  border: none;
+  color: #fffafa;
+  background: #b7c1bb;
+  border: none;
 }
 
 .delete-icon {
