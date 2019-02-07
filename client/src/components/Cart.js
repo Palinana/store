@@ -12,7 +12,8 @@ class Cart extends Component {
         cart: getCart(),
         editingProductId: null,
         currentEditQuantity: '',
-        total: getTotal().toFixed(2)
+        total: getTotal().toFixed(2),
+        finalTotal: (getTotal() + 3.60 + 5.00).toFixed(2)
     }
 
     handleEdit = (productId, quantity) => event => {
@@ -21,14 +22,14 @@ class Cart extends Component {
 
     handleDelete = productId => event => {
         deleteItem(productId);
-        this.setState({ cart: getCart(), total: getTotal().toFixed(2) })
+        this.setState({ cart: getCart(), total: getTotal().toFixed(2), finalTotal: (getTotal() + 3.60 + 5.00).toFixed(2) })
         this.props.updateCartSize();
     }
 
     handleUpdate = productId => event => {
         this.setState({ editingProductId: null })
         updateCart(productId, +this.state.currentEditQuantity)
-        this.setState({ cart: getCart(), total: getTotal().toFixed(2) })
+        this.setState({ cart: getCart(), total: getTotal().toFixed(2), finalTotal: (getTotal() + 3.60 + 5.00).toFixed(2) })
         this.props.updateCartSize();
     }
 
@@ -46,16 +47,16 @@ class Cart extends Component {
 
         return (
         <div className="row">
-            <div class="col-xs-12 mx-auto">
-                <div class="page-header">
+            <div className="col-xs-12 mx-auto">
+                <div className="page-header">
                     <h1>Your Cart</h1>
                 </div>
                 {
                 this.state.cart.length ?
                     
-                    <table class="table">
+                    <table className="table">
                     <thead>
-                        <tr>
+                        <tr className="table-header">
                             <th scope="col">Product</th>
                             <th scope="col">Unit Price</th>
                             <th scope="col">Quantity</th>
@@ -68,9 +69,9 @@ class Cart extends Component {
                             this.state.cart.map(item => {
                             const product = products.find(p => p.id === item.productId)
                                 return (
-                                    <tr className='cart-item' key={product.id}>
+                                    <tr className='cart-items' key={product.id}>
                                         
-                                        <td className="product-item">
+                                        <td className="cart-item">
                                             <img src={product.image} alt={product.name} className="cart-item__image"/>
                                             <Link to={`/products/${product.id}`} className="cart-item__name">{product.name} </Link>
                                         </td>
@@ -81,24 +82,28 @@ class Cart extends Component {
                                             {
                                             this.state.editingProductId === product.id
                                                 ? <div>
-                                                <h3>Qty: <input type="number" name="quantity" value={this.state.currentEditQuantity} onChange={this.updateEditQuantity} min="1" max={product.quantity} /></h3>
-                                                <button onClick={this.handleUpdate(product.id)}>Update Quantity</button>
+                                                <h3 className="cart-item__quantity"><input type="number" name="quantity" value={this.state.currentEditQuantity} onChange={this.updateEditQuantity} min="1" max={product.quantity} /></h3>
+                                                <button onClick={this.handleUpdate(product.id)}>Update</button>
                                                 </div>
                                                 : <div>
-                                                <h3>Qty: {item.quantity}</h3>
+                                                <h3 className="cart-item__quantity">{item.quantity}</h3>
                                                 {
                                                     !this.state.editingProductId &&
-                                                    <button onClick={this.handleEdit(product.id, item.quantity)}>Edit Quantity</button>
+                                                    <button onClick={this.handleEdit(product.id, item.quantity)}>Edit</button>
                                                 }
                                                 </div>
                                             }
                                             
                                         </td>
                                         <td>${(item.quantity * product.price).toFixed(2)}</td>
-                                        <td>
+                                        <td className="cart-item__delete">
                                             {
                                                 item.quantity
-                                                    ? <button onClick={this.handleDelete(product.id)}>Delete Item</button>
+                                                    ? 
+                                                    <svg className="cart__icon delete-icon" onClick={this.handleDelete(product.id)}>
+                                                        <use xlinkHref="/images/sprite.svg#icon-cross"></use>
+                                                    </svg>
+                                                    // <button onClick={this.handleDelete(product.id)}>Delete Item</button>
                                                     : <h3 id='sold-out'>SOLD OUT</h3>
                                             }
                                         </td>
@@ -110,20 +115,37 @@ class Cart extends Component {
                 </table>    
                 : <small>cart is empty</small>
                 }
-                <div class="row justify-content-end">
+                <div className="row justify-content-end">
                     {
                         +this.state.total
-                            ? <div className='cart-checkout__total'>
-                                <h3>Total:</h3>
-                                <h3> ${this.state.total}</h3>
-                            </div>
+                            ? 
+                            <table className="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th>Subtotal:</th>
+                                        <td>${this.state.total}</td>   
+                                    </tr>
+                                    <tr>
+                                        <th>Tax (5%)</th>
+                                        <td>$3.60</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping</th>
+                                        <td>$5.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total:</th>
+                                        <td>${this.state.finalTotal}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             : null
                         }
                 </div>
                 {
                     this.state.cart.length ? 
                         <div className="row justify-content-end cart-checkout">
-                            <Link to={{ pathname: '/checkout/shipping', state: { cart: this.state.cart, total: this.state.total } }}><button>Proceed to Shipping</button></Link>
+                            <Link to={{ pathname: '/checkout/shipping', state: { cart: this.state.cart, total: this.state.total } }}><button className="product-add">Checkout</button></Link>
                         </div>: null
                 }
             </div>
