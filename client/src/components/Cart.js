@@ -46,6 +46,7 @@ class Cart extends Component {
         }
 
         return (
+        <div className="container">
         <div className="row">
             <div className="col-xs-12 mx-auto">
                 <div className="page-header">
@@ -73,7 +74,10 @@ class Cart extends Component {
                                         
                                         <td className="cart-item">
                                             <img src={product.image} alt={product.name} className="cart-item__image"/>
-                                            <Link to={`/products/${product.id}`} className="cart-item__name">{product.name} </Link>
+                                            <Link to={`/products/${product.id}`} className="cart-item__name">{product.name}</Link>
+                                            <div>
+                                                <p className="cart-item__description">{product.description}</p>
+                                            </div>
                                         </td>
                                         
                                         <td>${product.price}</td>
@@ -82,14 +86,16 @@ class Cart extends Component {
                                             {
                                             this.state.editingProductId === product.id
                                                 ? <div>
-                                                <h3 className="cart-item__quantity"><input type="number" name="quantity" value={this.state.currentEditQuantity} onChange={this.updateEditQuantity} min="1" max={product.quantity} /></h3>
-                                                <button onClick={this.handleUpdate(product.id)}>Update</button>
+                                                    <h3 className="cart-item__quantity"><input type="number" name="quantity" value={this.state.currentEditQuantity} onChange={this.updateEditQuantity} min="1" max={product.quantity} /></h3>
+                                                    <button onClick={this.handleUpdate(product.id)} className="cart-item__update-btn">Update</button>
                                                 </div>
-                                                : <div>
+                                                : <div className="cart-item__edit">
                                                 <h3 className="cart-item__quantity">{item.quantity}</h3>
                                                 {
                                                     !this.state.editingProductId &&
-                                                    <button onClick={this.handleEdit(product.id, item.quantity)}>Edit</button>
+                                                    <svg className="cart__icon edit-icon" onClick={this.handleEdit(product.id, item.quantity)}>
+                                                        <use xlinkHref="/images/sprite.svg#icon-edit"></use>
+                                                    </svg>
                                                 }
                                                 </div>
                                             }
@@ -103,7 +109,6 @@ class Cart extends Component {
                                                     <svg className="cart__icon delete-icon" onClick={this.handleDelete(product.id)}>
                                                         <use xlinkHref="/images/sprite.svg#icon-cross"></use>
                                                     </svg>
-                                                    // <button onClick={this.handleDelete(product.id)}>Delete Item</button>
                                                     : <h3 id='sold-out'>SOLD OUT</h3>
                                             }
                                         </td>
@@ -148,6 +153,7 @@ class Cart extends Component {
                             <Link to={{ pathname: '/checkout/shipping', state: { cart: this.state.cart, total: this.state.total } }}><button className="product-add">Checkout</button></Link>
                         </div>: null
                 }
+            </div>
             </div>
             </div>
         )
