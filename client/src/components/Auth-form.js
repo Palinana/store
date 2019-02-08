@@ -3,44 +3,50 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { auth } from '../store'
 
-/**
- * COMPONENT
- */
 const AuthForm = (props) => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div className='login-page-container'>
-      <div className='login-page'>
-        <form onSubmit={handleSubmit} name={name}>
-          <div>
-            <label htmlFor="email"><small>Email</small></label>
-            <input name="email" type="text" />
+    <div className='container d-flex justify-content-center align-items-center'>
+        <div className="col-lg-5 container-form">
+            <div className="jumbotron">
+                <h3 className="text-center">{displayName}</h3>
+                <br/>
+                <form onSubmit={handleSubmit} name={name}>
+                    <div className="form-group input-group">
+                        <span className="input-group-addon">
+                            <svg className="cart__icon user-icon">
+                              <use xlinkHref="/images/sprite.svg#icon-user"></use>
+                            </svg>
+                        </span>
+                        <input className="form-control" name="email" type="text" placeholder="Email"/>
+                    </div>
+
+
+                    <div className="form-group input-group">
+                        <span className="input-group-addon">
+                            <svg className="cart__icon user-icon">
+                                <use xlinkHref="/images/sprite.svg#icon-key"></use>
+                            </svg>
+                        </span>
+                        <input className="form-control" name="password" type="password" placeholder="Password"/>
+                    </div>
+
+                    <div className="form-btn">
+                        <button className="form-btn__auth" type="submit">{displayName}</button>
+                    </div>
+                    {error && error.response && <div> {error.response.data} </div>}
+                </form>
+
+                <div className='google-login form-group form-btn'>
+                    <a id='google-btn' href="/auth/google">{displayName} with Google</a>
+                </div>
           </div>
-          <div>
-            <label htmlFor="password"><small>Password</small></label>
-            <input name="password" type="password" />
-          </div>
-          <div>
-            <button type="submit">{displayName}</button>
-          </div>
-          {error && error.response && <div> {error.response.data} </div>}
-        </form>
-        <div className='google-login'>
-          <a id='google-btn' href="/auth/google">{displayName} with Google</a>
         </div>
-      </div>
     </div>
   )
 }
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = (state) => {
   return {
     name: 'login',
@@ -72,9 +78,7 @@ const mapDispatch = (dispatch) => {
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
-/**
- * PROP TYPES
- */
+
 AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,

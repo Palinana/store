@@ -372,8 +372,66 @@ tr > th:not(:first-child) {
   margin-bottom: 100px
 }
 
+/*==========
+    LOGIN
+===========*/
+.container-form {
+  margin-top: 170px;
+}
 
+.jumbotron {
+  padding: 4rem 4rem !important;
+}
 
+.form-box {
+  flex-direction: column !important;
+}
+
+.input-group-addon {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555555;
+  text-align: center;
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.user-icon {
+  width: 18px;
+  height: 20px;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.form-btn {
+  text-align: center;
+}
+
+.form-btn__auth {
+  padding: 10px 40px;
+  font-size: 15px;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  letter-spacing: 1px;
+  margin: 15px 0;
+  color: #fff;
+  background: #b7c1bb;
+}
 
 
 
