@@ -1,7 +1,15 @@
-body {
-  background: #F7F7F7;
+*,
+*::after,
+*::before { 
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
+body {
+  background: #F7F7F7;
+  box-sizing: border-box;
+}
 
 /* like color 
 #e8d2cc
@@ -57,6 +65,7 @@ body {
   border-radius: 100px;
   width: 20px;
   height: 21px;
+  font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;

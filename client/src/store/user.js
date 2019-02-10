@@ -1,7 +1,5 @@
 import axios from 'axios';
 import history from '../history';
-// import {fetchUsers} from './users'
-// import {fetchOrders} from './orders'
 
 /**
  * ACTION TYPES
@@ -34,9 +32,10 @@ export const auth = (email, password, method) =>
   dispatch =>
     axios.post(`/auth/${method}`, { email, password })
       .then(res => {
+        console.log('datta ',res.data )
         dispatch(getUser(res.data))
         history.push('/')
-      }, authError => { // rare example: a good use case for parallel (non-catch) error handler
+      }, authError => { 
         dispatch(getUser({error: authError}))
         })
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
