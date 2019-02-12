@@ -17,7 +17,7 @@ body {
  overflow: hidden;
  display: block;
  position: relative;
- padding-bottom: 130px !important;
+ padding-bottom: 350px !important;
 }
 /* like color 
 #e8d2cc
@@ -468,6 +468,69 @@ footer {
   color: #dcdcdce6 !important; 
   padding: 0px 45px;
 }
+
+.footer-box {
+  padding: 45px 20px;
+}
+
+.footer-box__logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-logo {
+  font-size: 35px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.footer-rights {
+  margin-top: -15px;
+  margin-bottom: 0;
+}
+
+.footer-box__address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-box__address-info {
+  list-style-type: none;
+  margin: 0;
+  text-align: center;
+}
+
+.footer-box__social {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 !important;
+}
+
+.footer-nav__item {
+  padding: 0 10px;
+}
+
+.footer-social__icon {
+  height: 50px;
+  width: 30px;
+  fill: #dcdcdce6;
+}
+
+
+
+
+
 
 
 
