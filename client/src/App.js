@@ -1,6 +1,6 @@
 import React from 'react';
 import Routes from './routes';
-import Navbar from './components/Navbar';
+import { Navbar, Footer } from './components';
 
 import './App.css';
 
@@ -9,6 +9,7 @@ const App = () => {
         <div className="fluid-container">
             <Navbar />
             <Routes />
+            <Footer />
         </div>
     );
 }
