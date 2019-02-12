@@ -5,6 +5,7 @@
  */
 export {default as Navbar} from './Navbar';
 export {default as Sidebar} from './Sidebar';
+export {default as Footer} from './Footer';
 export {default as Products} from './Products';
 export {default as SingleProduct} from './SingleProduct';
 export {default as Cart} from './Cart';

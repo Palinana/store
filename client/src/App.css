@@ -9,8 +9,16 @@
 body {
   background: #F7F7F7;
   box-sizing: border-box;
+  position: relative;
+  height: 100%;
 }
-
+.fluid-container {
+  min-height: 100vh; 
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 130px !important;
+}
 /* like color 
 #e8d2cc
 #e8d9c8;
@@ -381,6 +389,11 @@ tr > th:not(:first-child) {
   margin-bottom: 100px
 }
 
+.cart-empty {
+  font-weight: 200;
+  color: #7b7b7be6;
+}
+
 /*==========
     LOGIN
 ===========*/
@@ -442,7 +455,19 @@ tr > th:not(:first-child) {
   background: #b7c1bb;
 }
 
+/*===========
+    FOOTER
+============*/
 
+footer {
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  background-color: #1f1f1f;
+  color: #dcdcdce6 !important; 
+  padding: 0px 45px;
+}
 
 
 
