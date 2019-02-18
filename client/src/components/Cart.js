@@ -50,7 +50,7 @@ class Cart extends Component {
             <div className="row">
                 <div className="col-xs-12 mx-auto">
                     <div className="page-header">
-                        <h1>Your Cart</h1>
+                        <h1 className="page-header__text">Your Cart</h1>
                     </div>
                     {
                         this.state.cart.length ?

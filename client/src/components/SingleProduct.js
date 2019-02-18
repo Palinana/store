@@ -42,7 +42,7 @@ class SingleProduct extends Component {
                         
                         <div className="col-md-6">
                             <h3 className="product-info__name">{product.name}</h3>
-                            <h4>${product.price}</h4>
+                            <h4 className="product-info__price">${product.price}</h4>
                             <p className="product-info__description" id='product-description'>{product.description}</p>
                        
                             <div id="details">
