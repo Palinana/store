@@ -81,19 +81,22 @@ class Products extends Component {
                                 {  products.filter(this.searchingFor(this.state.search)).length ?
                                     (products.filter(this.searchingFor(this.state.search)).map(product => {
                                     return (
-                                        <div className="col-sm-3 col-md-3 product__item" key={product.id}>
-                                            <div className="card">
-                                                <Link to={`/products/${product.id}`}>
-                                                <img src={product.image} className="card-img-top" id="thumbnails" alt={product.name}/>
-                                                </Link>
-                                                <div className="card-body">
-                                                    <h3 className="product-name">{product.name}</h3>
-                                                    <h4 className="product-price">${product.price}</h4>  
+                                        <div className="col-md-6 col-lg-3 product__item" key={product.id}>
+                                             <div class="card-group">
+                                                <div className="card">
+                                                    <Link to={`/products/${product.id}`}>
+                                                    <img src={product.image} className="card-img-top" id="thumbnails" alt={product.name}/>
+                                                    </Link>
+                                                    <div className="card-body">
+                                                        <h3 className="product-name">{product.name}</h3>
+                                                        <h4 className="product-price">${product.price}</h4>  
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     )
-                                    })) : <p className='row'>No Match</p>
+                                    })) : 
+                                    <p className='main-view__no-match mx-auto'>No Match</p>
                                 }
                             </div> : 
                         
@@ -101,30 +104,34 @@ class Products extends Component {
                                 {
                                     products.slice(0,this.state.limit).map(product => {
                                     return (
-                                        <div className="col-sm-3 col-md-3 product__item" key={product.id}>
-                                            <div className="card">
-                                                <Link to={`/products/${product.id}`}>
-                                                <img src={product.image} className="card-img-top" id="thumbnails" alt={product.name}/>
-                                                </Link>
-                                                <div className="card-body">
-                                                    <h3 className="product-name">{product.name}</h3>
-                                                    <h4 className="product-price">${product.price}</h4>  
+                                        <div className="col-md-6 col-lg-3 product__item" key={product.id}>
+                                            <div class="card-group">
+                                                <div className="card">
+                                                    <div class="view overlay">
+                                                        <Link to={`/products/${product.id}`}>
+                                                            <img src={product.image} className="card-img-top" id="thumbnails" alt={product.name}/>
+                                                        </Link> 
+                                                    </div>
+                                                
+                                                    <div className="card-body">
+                                                        <h3 className="product-name">{product.name}</h3>
+                                                        <h4 className="product-price">${product.price}</h4>  
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     )
                                     })
                                 }
+
+                                { limit < products.length ? 
+                                    <div className="row mx-auto">
+                                        <button onClick={this.onLoadMore} className="btn-primary mx-auto">Load More</button>
+                                    </div>
+                                    : null
+                                }
                             </div>
                     }
-
-                    { limit < products.length ? 
-                        <div className="row">
-                            <button onClick={this.onLoadMore} className="btn-primary mx-auto">Load More</button>
-                        </div>
-                        : null
-                    }
-                    
                 </div>
             </div>
         )

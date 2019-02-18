@@ -10,16 +10,16 @@ const AuthForm = (props) => {
     <div className='container d-flex justify-content-center align-items-center'>
         <div className="col-lg-5 container-form">
             <div className="jumbotron">
-                <h3 className="text-center">{displayName}</h3>
+                <h3 className="text-center container-form__name">{displayName}</h3>
                 <br/>
                 <form onSubmit={handleSubmit} name={name}>
-                    <div className="form-group input-group">
+                    <div className="form-group input-group" id="user-field">
                         <span className="input-group-addon">
                             <svg className="cart__icon user-icon">
                               <use xlinkHref="/images/sprite.svg#icon-user"></use>
                             </svg>
                         </span>
-                        <input className="form-control" name="email" type="text" placeholder="Email"/>
+                        <input className="form-control form__input"  name="email" type="text" placeholder="Email"/>
                     </div>
 
 
@@ -29,7 +29,7 @@ const AuthForm = (props) => {
                                 <use xlinkHref="/images/sprite.svg#icon-key"></use>
                             </svg>
                         </span>
-                        <input className="form-control" name="password" type="password" placeholder="Password"/>
+                        <input className="form-control form__input" name="password" type="password" placeholder="Password"/>
                     </div>
 
                     <div className="form-btn">
