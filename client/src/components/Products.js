@@ -105,9 +105,9 @@ class Products extends Component {
                                     products.slice(0,this.state.limit).map(product => {
                                     return (
                                         <div className="col-md-6 col-lg-3 product__item" key={product.id}>
-                                            <div class="card-group">
+                                            <div className="card-group">
                                                 <div className="card">
-                                                    <div class="view overlay">
+                                                    <div className="view overlay">
                                                         <Link to={`/products/${product.id}`}>
                                                             <img src={product.image} className="card-img-top" id="thumbnails" alt={product.name}/>
                                                         </Link> 
