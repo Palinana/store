@@ -32,7 +32,7 @@ export const auth = (email, password, method) =>
   dispatch =>
     axios.post(`/auth/${method}`, { email, password })
       .then(res => {
-        console.log('datta ',res.data )
+        // console.log('datta ',res.data )
         dispatch(getUser(res.data))
         history.push('/')
       }, authError => { 
