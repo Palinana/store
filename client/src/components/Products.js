@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import Search from './Search'
-
+import Search from './Search';
+import { addToFavourites } from '../utils/favourites';
+import { clearCart } from '../utils/favourites';
 
 class Products extends Component {
     constructor(props) {
@@ -22,6 +23,7 @@ class Products extends Component {
         this.searchingFor = this.searchingFor.bind(this)
         this.onLoadMore = this.onLoadMore.bind(this)
         this.filterByColor = this.filterByColor.bind(this)
+        this.addFavourite = this.addFavourite.bind(this)
     }
     
     searchingFor(search){
@@ -38,6 +40,11 @@ class Products extends Component {
 
     filterByColor(color, arr) {
         return arr.filter(elem => elem.color === color)
+    }
+
+    addFavourite (id, name, price, image) {
+        addToFavourites(id, name, price, image)
+        // clearCart()
     }
 
     handleClick (value, id) {
@@ -114,8 +121,16 @@ class Products extends Component {
                                                     </div>
                                                 
                                                     <div className="card-body">
-                                                        <h3 className="product-name">{product.name}</h3>
-                                                        <h4 className="product-price">${product.price}</h4>  
+                                                        <div className="card-body__visible">
+                                                            <h3 className="product-name">{product.name}</h3>
+                                                            <h4 className="product-price">${product.price}</h4>  
+                                                        </div>
+
+                                                        <div className="card-body__invisible" onClick={this.addFavourite(product.id, product.name, product.price, product.image)}>
+                                                            <svg className="heart__icon">
+                                                                <use xlinkHref="/images/sprite.svg#icon-heart"></use>
+                                                            </svg>  
+                                                        </div>                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,6 +168,7 @@ const mapState = (state, ownProps) => {
         categoryId
     }
 }
+
 
 export default connect(mapState)(Products)
 

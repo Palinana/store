@@ -11,5 +11,6 @@ export {default as SingleProduct} from './SingleProduct';
 export {default as Cart} from './Cart';
 export {default as Checkout} from './Checkout';
 export {default as Success} from './Success';
+export {default as Favourites} from './Favourites';
 export {default as Search} from './Search';
 export {Login, Signup} from './Auth-form';
