@@ -11,9 +11,13 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-router.post('/', (req, res, next) => {
-  // user must be logged in
+router.get('/:id', (req, res, next) => {
+  Order.findById(req.params.id)
+    .then(order => res.json(order))
+    .catch(next)
+})
 
+router.post('/', (req, res, next) => {
   if (!req.user) {
     return res.sendStatus(403);
   }
