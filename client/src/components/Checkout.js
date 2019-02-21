@@ -1,17 +1,15 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import StripeCheckout from 'react-stripe-checkout'
-import history from '../history'
-import { clearCart } from '../utils/cart'
-import { addToCart, getCartSize } from '../utils/cart';
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import StripeCheckout from 'react-stripe-checkout';
+import { clearCart } from '../utils/cart';
+import { getCartSize } from '../utils/cart';
 import { updateCartSize } from '../store';
 
 
-const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production'
-? 'http://putherokuhere.com' 
-: 'http://localhost:5000/api/checkout/payment';
+// const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production'
+// ? 'http://putherokuhere.com' 
+// : 'http://localhost:5000/api/checkout/payment';
 
 const STRIPE_PUBLISHABLE = process.env.NODE_ENV === 'product'
 ? 'pk_test_ifL68KcdvyP86xfWifl8kvDn' 
@@ -43,7 +41,7 @@ class Checkout extends Component {
         axios.post('/api/orders',
             {
             userId, 
-            confirmationCode: Math.floor(amount + amount), 
+            confirmationCode: Math.floor((amount + amount) * 2000), 
             cart, 
             total: amount
             })
@@ -51,12 +49,15 @@ class Checkout extends Component {
             .catch(this.errorPayment);
 
     successPayment = data => {
-        // alert('Payment Successful!')
+        console.log('Payment data!', data.data.confirmationCode)
         setTimeout(
             function() {
                 clearCart();
                 this.props.updateCartSize(getCartSize());
-                history.push('/success')
+                this.props.history.push({
+                    pathname: '/success',
+                    state: { orderNumber: data.data.confirmationCode }
+                })
             }
             .bind(this),
             1000
@@ -112,7 +113,7 @@ class Checkout extends Component {
                     <StripeCheckout
                         description={`Charge for ${user.email}`}
                         amount={fixedTotal}
-                        token={this.onToken(total,`Charge for ${user.email}`, user.id , cart)}
+                        token={this.onToken(+total,`Charge for ${user.email}`, user.id , cart)}
                         currency={CURRENCY}
                         stripeKey={STRIPE_PUBLISHABLE}
                     />

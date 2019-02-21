@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Login, Signup, Products, SingleProduct, Cart, Checkout, Success } from './components';
-import { me, fetchProducts, fetchCategories, updateCartSize } from './store';
+import { me, fetchProducts, fetchCategories, updateCartSize, fetchOrders } from './store';
 
 class Routes extends Component {
   componentDidMount() {
@@ -49,6 +49,7 @@ const mapDispatch = dispatch => {
       dispatch(fetchCategories())
       dispatch(fetchProducts())
       dispatch(updateCartSize())
+      dispatch(fetchOrders())
     }
   }
 }

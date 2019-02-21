@@ -5,7 +5,7 @@ import { auth } from '../store'
 
 const AuthForm = (props) => {
   const {name, displayName, handleSubmit, error} = props
-
+  console.log('this.props.location.state', props.location.state)
   return (
     <div className='container d-flex justify-content-center align-items-center'>
         <div className="col-lg-5 container-form">
