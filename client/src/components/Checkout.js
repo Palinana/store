@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout'
 import history from '../history'
 import { clearCart } from '../utils/cart'
+import { addToCart, getCartSize } from '../utils/cart';
+import { updateCartSize } from '../store';
+
 
 const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production'
 ? 'http://putherokuhere.com' 
@@ -15,44 +18,52 @@ const STRIPE_PUBLISHABLE = process.env.NODE_ENV === 'product'
 : 'pk_test_ifL68KcdvyP86xfWifl8kvDn';
 
 const CURRENCY = 'USD';
-
-const successPayment = data => {
-    alert('Payment Successful!')
-    setTimeout(
-        function() {
-            clearCart();
-            history.push('/products')
-        }
-        .bind(this),
-        2000
-    );
-}
-const errorPayment = data => alert('Payment Error!')
-
-const onToken = (amount, description, userId, cart) => token =>
-  axios.post('/api/orders',
-    {
-      userId, 
-      confirmationCode: userId + amount, 
-      cart, 
-      total: amount
-    })
-    .then(successPayment)
-    .catch(errorPayment);
+ /* Card test info:
+    js@gmail.com
+    4242424242424242
+    08/2020
+    4242
+*/
 
 class Checkout extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            email: '',
             address: '',
             city: '',
             state: '',
             zipcode: '',
             country: '',
             complete: false
-        }
+        } 
     }
 
+    onToken = (amount, description, userId, cart) => token =>
+        axios.post('/api/orders',
+            {
+            userId, 
+            confirmationCode: Math.floor(amount + amount), 
+            cart, 
+            total: amount
+            })
+            .then(this.successPayment)
+            .catch(this.errorPayment);
+
+    successPayment = data => {
+        // alert('Payment Successful!')
+        setTimeout(
+            function() {
+                clearCart();
+                this.props.updateCartSize(getCartSize());
+                history.push('/success')
+            }
+            .bind(this),
+            1000
+        );
+    }
+    errorPayment = data => alert('Payment Error!')
+            
     handleChange = event => {
         this.setState({
           [event.target.name] : event.target.value
@@ -63,45 +74,60 @@ class Checkout extends Component {
           this.state.complete = false;
         }
     }
-    
-      
+
     render() {
-        /* Card test info:
-            js@gmail.com
-            4242424242424242
-            08/2020
-            4242
-        */
-        
         const { user, cart, total } = this.props.location.state
+        let fixedTotal = total * 100 //for the stripe popup
+
         return (
-          <div className='login-page-container'>
-                <h3>Shipping Details:</h3>
-                <div className='shipping'>
-                    <form id='shipping-form'>
-                        <label>Address Line 1 *</label>
-                        <input type='text' name='address' placeholder='ex: 123 Self-Improvement Rd' onChange={this.handleChange}/>
-                        <label>City *</label>
-                        <input type='text' name='city' placeholder='ex: New York' onChange={this.handleChange}/>
-                        <label>State *</label>
-                        <input type='text' name='state' placeholder='ex: NY' onChange={this.handleChange}/>
-                        <label>Zip Code *</label>
-                        <input type='text' name='zip' placeholder='ex: 10004' onChange={this.handleChange}/>
-                        <label>Country *</label>
-                        <input type='text' name='country' placeholder='ex: USA' onChange={this.handleChange}/>
-                    </form>
+          <div className='container'>
+                <div className='row'>   
+                    <div className="col-xs-12 mx-auto">
+                        <div className="page-header">
+                            <h1 className="page-header__text">Shipping Details:</h1>
+                        </div>
+                        <div className='shipping'>
+                            <form id='shipping-form'>
+                                <div className="form-group input-group">
+                                    <input className="form-control form__input" name="address" type="text" placeholder="Address" onChange={this.handleChange}/>
+                                </div>
+                                <div className="form-group input-group">
+                                    <input className="form-control form__input" name="city" type="text" placeholder="City" onChange={this.handleChange}/>
+                                </div>
+                                <div className="form-group input-group">
+                                    <input className="form-control form__input" name="state" type="text" placeholder="State" onChange={this.handleChange}/>
+                                </div>
+                                <div className="form-group input-group">
+                                    <input className="form-control form__input" name="zip" type="text" placeholder="Zip Code" onChange={this.handleChange}/>
+                                </div>
+                                <div className="form-group input-group">
+                                    <input className="form-control form__input" name="country" type="text" placeholder="Country" onChange={this.handleChange}/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <br/>
-                <StripeCheckout
-                    description={`Charge for ${user.email}`}
-                    amount={+total}
-                    token={onToken(total,`Charge for ${user.email}`, user.id, cart)}
-                    currency={CURRENCY}
-                    stripeKey={STRIPE_PUBLISHABLE}
-                />
+                <div className="col-xs-12 text-center">
+                    <StripeCheckout
+                        description={`Charge for ${user.email}`}
+                        amount={fixedTotal}
+                        token={this.onToken(total,`Charge for ${user.email}`, user.id , cart)}
+                        currency={CURRENCY}
+                        stripeKey={STRIPE_PUBLISHABLE}
+                    />
+                </div>
           </div>
         )
     }
 }
 
-export default connect(null, null)(Checkout)
+const mapDispatch = dispatch => {
+    return {
+        updateCartSize() {
+            dispatch(updateCartSize());
+        }
+    }
+}
+
+export default connect(null, mapDispatch)(Checkout)

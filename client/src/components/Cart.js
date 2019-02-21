@@ -152,7 +152,13 @@ class Cart extends Component {
                     {
                         this.state.cart.length ? 
                             <div className="row justify-content-end cart-checkout">
-                                <Link to={{ pathname: '/checkout', state: { cart: this.state.cart, total: this.state.total, user: user } }}><button className="product-add">Checkout</button></Link>
+                                {
+                                    Object.keys(user).length === 0 ? 
+                                    <Link to={{ pathname: '/signup', state: { cart: this.state.cart, total: this.state.total, user: undefined } }}><button className="product-add">Checkout</button></Link>
+                                    :
+                                    <Link to={{ pathname: '/checkout', state: { cart: this.state.cart, total: this.state.total, user: user } }}><button className="product-add">Checkout</button></Link>
+                                }
+                                
                             </div>: null
                     }
                 </div>
@@ -163,7 +169,6 @@ class Cart extends Component {
 }
 
 const mapState = state => {
-    console.log('statet: ',state)
     return {
         products: state.products,
         user: state.user,
