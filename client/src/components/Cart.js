@@ -126,7 +126,7 @@ class Cart extends Component {
                         +this.state.total ? 
                             <div className="row justify-content-end">
                                 <table className="table table-borderless">
-                                    <tbody>
+                                    <tbody className="table-borderless__content">
                                         <tr>
                                             <th>Subtotal:</th>
                                             <td>${this.state.total}</td>   

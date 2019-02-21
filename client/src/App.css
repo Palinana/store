@@ -87,6 +87,10 @@ body {
   background-color: #1f1f1f !important;
 }
 
+#favourites {
+  margin: 0 5px 0 10px;
+}
+
 .cart__icon {
   height: 40px;
   width: 25px;
@@ -326,6 +330,42 @@ body {
   text-align: center;
 }
 
+.card-body {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-body > * {
+  transition: all .2s;
+}
+
+.card-body:hover .card-body__visible{ 
+  transform: translateY(150%)
+}
+
+.card-body__invisible {
+  position: absolute;
+  top: -100%;
+  left: 11.5rem;
+  transition: all .2s;
+}
+
+.card-body:hover .card-body__invisible {
+  top: 29%;
+  left: 11.5rem;
+}
+
+.heart__icon {
+  height: 40px;
+  width: 35px;
+  fill: #a73232e6;
+}
+
+.card-body:active {
+  background: #e8e1cc;
+}
+
 /*============
     PRODUCT
 =============*/
@@ -458,6 +498,7 @@ body {
 .edit-icon {
   width: 15px;
   height: 15px;
+  fill: #a9a7a7e6;
 }
 
 .cart-item__update-btn {
@@ -475,7 +516,7 @@ body {
   left: 0;
   height: 40px;
   width: 23px;
-  fill: #dcdcdce6;
+  fill: #c57d7d;
 }
 
 td {
@@ -494,6 +535,19 @@ tr > th:not(:first-child) {
 
 .table-borderless tr > td {
   text-align: right;
+  font-weight: 400;
+}
+
+.table-borderless tr > th {
+  font-weight: 400;
+}
+
+.table-borderless__content > tr:last-child > th{
+  font-weight: 900 !important;
+}
+
+.table-borderless__content > tr:last-child > td{
+  font-weight: 900 !important;
 }
 
 .cart-checkout {
