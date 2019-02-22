@@ -14,7 +14,7 @@ const Navbar = ({ handleClick, isLoggedIn, email, cartSize }) => (
                 <ul className="nav navbar-nav ml-auto top-nav">
                     <li className="nav-item"><Link to="/" className="nav-link">Hello, {email}</Link></li>
                     <li className="nav-item" id="favourites">
-                        <Link to="/favourites">
+                        <Link to="/favorites">
                             <svg className="cart__icon">
                                 <use xlinkHref="/images/sprite.svg#icon-heart"></use>
                             </svg>
@@ -39,7 +39,7 @@ const Navbar = ({ handleClick, isLoggedIn, email, cartSize }) => (
                     <li className="nav-link"><span className="straight-bar"> | </span></li>
                     <li className="nav-item"><Link to="/signup" className="nav-link">Sign Up</Link></li>
                     <li className="nav-item" id="favourites">
-                        <Link to="/favourites">
+                        <Link to="/favorites">
                             <svg className="cart__icon">
                                 <use xlinkHref="/images/sprite.svg#icon-heart"></use>
                             </svg>

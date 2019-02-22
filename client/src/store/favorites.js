@@ -1,4 +1,4 @@
-import { getFavouritesSize } from '../utils/favourites';
+import { getFavoritesSize } from '../utils/favorites';
 
 /**
  * ACTION TYPES
@@ -8,14 +8,14 @@ const GOT_FAVS_SIZE = 'GOT_FAVS_SIZE'
 /**
  * ACTION CREATORS
  */
-const gotFavouritesSize = (size) => ({ type: GOT_FAVS_SIZE, size })
+const gotFavoritesSize = (size) => ({ type: GOT_FAVS_SIZE, size })
 
 /**
  * THUNK CREATORS
  */
-export const updateFavouritesSize = () =>
+export const updateFavoritesSize = () =>
     dispatch =>
-        dispatch(gotFavouritesSize(getFavouritesSize()))
+        dispatch(gotFavoritesSize(getFavoritesSize()))
 
 /**
  * REDUCER

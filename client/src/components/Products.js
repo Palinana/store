@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Search from './Search';
-import { addToFavourites } from '../utils/favourites';
-import { clearCart } from '../utils/favourites';
+import { addToFavorites } from '../utils/favorites';
 
 class Products extends Component {
     constructor(props) {
@@ -23,7 +22,7 @@ class Products extends Component {
         this.searchingFor = this.searchingFor.bind(this)
         this.onLoadMore = this.onLoadMore.bind(this)
         this.filterByColor = this.filterByColor.bind(this)
-        this.addFavourite = this.addFavourite.bind(this)
+        this.addFavorites = this.addFavorites.bind(this)
     }
     
     searchingFor(search){
@@ -42,9 +41,8 @@ class Products extends Component {
         return arr.filter(elem => elem.color === color)
     }
 
-    addFavourite (id, name, price, image) {
-        addToFavourites(id, name, price, image)
-        // clearCart()
+    addFavorites (id, name, price, image) {
+        addToFavorites(id, name, price, image)
     }
 
     handleClick (value, id) {
@@ -126,7 +124,7 @@ class Products extends Component {
                                                             <h4 className="product-price">${product.price}</h4>  
                                                         </div>
 
-                                                        <div className="card-body__invisible" onClick={this.addFavourite(product.id, product.name, product.price, product.image)}>
+                                                        <div className="card-body__invisible" onClick={() => this.addFavorites(product.id, product.name, product.price, product.image)}>
                                                             <svg className="heart__icon">
                                                                 <use xlinkHref="/images/sprite.svg#icon-heart"></use>
                                                             </svg>  
