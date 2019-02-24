@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { getFavorites, updateFavorites, deleteItem } from '../utils/favorites';
+import { getFavorites, deleteItem } from '../utils/favorites';
+import { updateCartSize } from '../store';
+import { addToCart, getCartSize } from '../utils/cart';
 
 class Favorites extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            favorites: getFavorites()
+            favorites: getFavorites(),
+            quantity : 1
         }
         this.removeFavorite = this.removeFavorite.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleCartSubmit = this.handleCartSubmit.bind(this)
     }
 
     removeFavorite(productId) {
         deleteItem(productId)
         this.setState({ favorites: getFavorites() })
+    }
+
+    handleChange (event) {
+        this.setState({ [event.target.name] : event.target.value })
+    }
+
+    handleCartSubmit = (id, price) => event=> {
+        event.preventDefault();
+        addToCart(id, +this.state.quantity, price)
+        
+        this.props.updateCartSize(getCartSize());
     }
 
     render() {
@@ -39,14 +54,17 @@ class Favorites extends Component {
                                 this.state.favorites.map(item => {
                                     const product = products.find(p => p.id === item.productId)
                                     return (
-                                        <div className="col-md-6 col-lg-3 favorites-box text-center" key={product.name}>
+                                        <div className={this.state.favorites.length > 1 ? "col-xs-12 col-sm-6 col-md-4 col-lg-3 favorites-box text-center mx-auto" : "col-sm-6 col-md-4 col-lg-6 favorites-box text-center mx-auto"} key={product.name}>
                                             <svg className="remove__icon" onClick={() => this.removeFavorite(product.id)}>
                                                 <use xlinkHref="/images/sprite.svg#icon-circle-with-cross"></use>
                                             </svg>
                                             <img src={product.image} className="card-img-top" id="thumbnail" alt={product.name}/>                            
                                             <h2 className="">{product.name}</h2>
                                             <h3 className="">{product.price}</h3>
-                                            <button className="favorite-add">Add to Cart</button>
+                                            <div className="form-group input-group" id="favorite-form">
+                                                <input className="form-control product-info__quantity" id="favorite-input" type="number" name="quantity" value={this.state.quantity} onChange={this.handleChange} min="1" max={product.quantity}/>
+                                            </div>
+                                            <button className="favorite-add" onClick={this.handleCartSubmit(product.id, product.price)}>Add to Cart</button>
                                         </div>    
                                     )
                                 })
@@ -68,4 +86,12 @@ const mapState = state => {
     }
 }
 
-export default connect(mapState, null)(Favorites)
+const mapDispatch = dispatch => {
+    return {
+        updateCartSize() {
+            dispatch(updateCartSize());
+        }
+    }
+}
+
+export default connect(mapState, mapDispatch)(Favorites)
