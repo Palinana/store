@@ -386,6 +386,19 @@ body {
   margin-bottom: 1rem;
 }
 
+#favorite-form {
+  width: 30% !important;
+  margin: 0 auto !important;
+}
+
+#favorite-input {
+  display: inline;
+  width: 10% !important;
+  height: calc(3.5rem + 0px) !important;
+  font-size: 1.3rem !important;
+  padding: 1.375rem 2rem !important;
+}
+
 .favorite-add {
   padding: .7rem 2.5rem;
   font-size: 1.3rem;
