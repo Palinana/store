@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getFavorites, deleteItem } from '../utils/favorites';
 import { updateCartSize } from '../store';
 import { addToCart, getCartSize } from '../utils/cart';
@@ -58,13 +59,17 @@ class Favorites extends Component {
                                             <svg className="remove__icon" onClick={() => this.removeFavorite(product.id)}>
                                                 <use xlinkHref="/images/sprite.svg#icon-circle-with-cross"></use>
                                             </svg>
-                                            <img src={product.image} className="card-img-top" id="thumbnail" alt={product.name}/>                            
-                                            <h2 className="">{product.name}</h2>
-                                            <h3 className="">{product.price}</h3>
-                                            <div className="form-group input-group" id="favorite-form">
+                                            <Link to={`/products/${product.id}`}>
+                                                <img src={product.image} className="card-img-top" id="thumbnail" alt={product.name}/>                            
+                                            </Link>
+                                            <h2 className="product-name">{product.name}</h2>
+                                            <h3 className="product-price" id="favorite-price">{product.price}</h3>
+                                            <div className="form-group input-group" id="favorite-form" key={product.name}>
                                                 <input className="form-control product-info__quantity" id="favorite-input" type="number" name="quantity" value={this.state.quantity} onChange={this.handleChange} min="1" max={product.quantity}/>
                                             </div>
-                                            <button className="favorite-add" onClick={this.handleCartSubmit(product.id, product.price)}>Add to Cart</button>
+                                            <div className="favorite-btn">
+                                                <button className="favorite-add" onClick={this.handleCartSubmit(product.id, product.price)}>Add to Cart</button>
+                                            </div>
                                         </div>    
                                     )
                                 })
