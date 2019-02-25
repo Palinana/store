@@ -62,7 +62,7 @@ class Products extends Component {
     }
 
     render() {
-        let { products } = this.props; 
+        let { products } = this.props;
         const { limit, color } = this.state;
         let searchLength = this.state.search.length;
         let isDirty = searchLength ? true : false;
@@ -71,7 +71,7 @@ class Products extends Component {
         if(color) {
             products = this.filterByColor(color, products)
         }
-        
+
         return (
             <div className="row main-view">
                 <Sidebar color={this.state.color} handleClick={this.handleClick} addCloseButton={this.state.addCloseButton}/>
