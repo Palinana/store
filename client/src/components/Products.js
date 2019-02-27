@@ -75,7 +75,7 @@ class Products extends Component {
         return (
             <div className="row main-view">
                 <Sidebar color={this.state.color} handleClick={this.handleClick} addCloseButton={this.state.addCloseButton}/>
-                <div className="col-md-10">  
+                <div className="col-md-9 col-lg-10">  
                     <div className="row product-search">
                         <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
                     </div>  

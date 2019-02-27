@@ -154,9 +154,9 @@ class Cart extends Component {
                             <div className="row justify-content-end cart-checkout">
                                 {
                                     Object.keys(user).length === 0 ? 
-                                    <Link to={{ pathname: '/login', state: { cart: this.state.cart, total: this.state.total} }}><button className="product-add">Checkout</button></Link>
+                                    <Link to={{ pathname: '/login', state: { cart: this.state.cart, total: this.state.total} }}><button className="product-add" id="btn-cart">Checkout</button></Link>
                                     :
-                                    <Link to={{ pathname: '/checkout', state: { cart: this.state.cart, total: this.state.total, user: user } }}><button className="product-add">Checkout</button></Link>
+                                    <Link to={{ pathname: '/checkout', state: { cart: this.state.cart, total: this.state.total, user: user } }}><button className="product-add" id="btn-cart">Checkout</button></Link>
                                 }
                                 
                             </div>: null
