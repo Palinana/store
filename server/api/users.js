@@ -11,13 +11,6 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-router.put('/ship/:userId', (req, res, next) => {
-  User.findById(req.params.userId)
-    .then(user => user.update(req.body))
-    .then(updatedUser => res.send(updatedUser))
-    .catch(next)
-})
-
 router.delete('/:id', (req, res, next) => {
   User.destroy({
     where: {
