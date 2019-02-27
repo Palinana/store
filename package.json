@@ -11,7 +11,7 @@
     "client": "cd client && npm run start",
     "start-dev": "webpack -w & nodemon server/index.js",
     "seed": "node script/seed.js",
-    "test": "mocha ./server/**/*.spec.js ./server/**/**/*.spec.js",
+    "test": "NODE_ENV='test' mocha ./server/**/*.spec.js ./server/**/**/*.spec.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
