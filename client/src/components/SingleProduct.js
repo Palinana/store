@@ -59,13 +59,13 @@ class SingleProduct extends Component {
         return (
             <div className="row main-view">
                 <Sidebar color={this.state.color} handleClick={this.handleClick}/>
-                <div className="col-md-10">
+                <div className="col-md-10" id="product-page-box">
                     <div className="row product-page">
                         <div className="col-md-6 product-section__image">
                             <img src={product.image} alt={product.name} className="product-image"/>
                         </div>
                         
-                        <div className="col-md-6">
+                        <div className="col-md-6" id="product-section__info">
                             <h3 className="product-info__name">{product.name}</h3>
                             <h4 className="product-info__price">${product.price}</h4>
                             <p className="product-info__description" id='product-description'>{product.description}</p>
@@ -79,7 +79,7 @@ class SingleProduct extends Component {
                                             pathname: '/success',
                                             state: product}}
                                             onClick={this.handleCartSubmit}
-                                            ><button className="product-add">Add to Cart</button>
+                                            ><button className="product-add" id="btn-item">Add to Cart</button>
                                         </Link>
                                     : <h3>SOLD OUT</h3> 
                                 }
