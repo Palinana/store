@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import { clearCart } from '../utils/cart';
 import { getCartSize } from '../utils/cart';
 import { updateCartSize } from '../store';
-
-
-// const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production'
-// ? 'http://putherokuhere.com' 
-// : 'http://localhost:5000/api/checkout/payment';
 
 const STRIPE_PUBLISHABLE = process.env.NODE_ENV === 'product'
 ? 'pk_test_ifL68KcdvyP86xfWifl8kvDn' 
@@ -132,3 +128,7 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(null, mapDispatch)(Checkout)
+
+Checkout.propTypes = {
+    updateCartSize: PropTypes.func.isRequired
+}

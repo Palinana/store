@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Search from './Search';
 import { addToFavorites } from '../utils/favorites';
+import swal from 'sweetalert';
 
 class Products extends Component {
     constructor(props) {
@@ -43,6 +44,11 @@ class Products extends Component {
 
     addFavorites (id, name, price, image) {
         addToFavorites(id, name, price, image)
+        swal({
+            title: "The Item was added to Your Favorites!",
+            icon: "success",
+            timer: 2000
+        });
     }
 
     handleClick (value, id) {
@@ -93,8 +99,16 @@ class Products extends Component {
                                                     <img src={product.image} className="card-img-top" id="thumbnails" alt={product.name}/>
                                                     </Link>
                                                     <div className="card-body">
-                                                        <h3 className="product-name">{product.name}</h3>
-                                                        <h4 className="product-price">${product.price}</h4>  
+                                                        <div className="card-body__visible">
+                                                            <h3 className="product-name">{product.name}</h3>
+                                                            <h4 className="product-price">${product.price}</h4>  
+                                                        </div>
+
+                                                        <div className="card-body__invisible" onClick={() => this.addFavorites(product.id, product.name, product.price, product.image)}>
+                                                            <svg className="heart__icon">
+                                                                <use xlinkHref="/images/sprite.svg#icon-heart"></use>
+                                                            </svg>  
+                                                        </div>     
                                                     </div>
                                                 </div>
                                             </div>
