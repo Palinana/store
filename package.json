@@ -74,6 +74,7 @@
     "sequelize": "^4.37.10",
     "socket.io": "^2.0.3",
     "stripe": "^5.8.0",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "sweetalert": "^2.1.2"
   }
 }

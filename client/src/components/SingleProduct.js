@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import { addToCart, getCartSize } from '../utils/cart';
 import { addToFavorites } from '../utils/favorites';
+import swal from 'sweetalert';
 
 class SingleProduct extends Component {
     constructor(props) {
@@ -29,12 +30,21 @@ class SingleProduct extends Component {
         event.preventDefault();
         
         addToCart(this.props.product.id, +this.state.quantity, this.props.product.price)
-        
         this.props.updateCartSize(getCartSize());
+        swal({
+            title: "Added to Cart",
+            icon: "success",
+            timer: 2000
+        });
     }
 
     addFavorites (id, name, price, image) {
         addToFavorites(id, name, price, image)
+        swal({
+            title: "The Item was added to Your Favorites!",
+            icon: "success",
+            timer: 2000
+        });
     }
 
     handleClick (value, id) {

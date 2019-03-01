@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getFavorites, deleteItem } from '../utils/favorites';
 import { updateCartSize } from '../store';
 import { addToCart, getCartSize } from '../utils/cart';
+import swal from 'sweetalert';
 
 class Favorites extends Component {
     constructor(props) {
@@ -31,6 +32,11 @@ class Favorites extends Component {
         addToCart(id, +this.state.quantity, price)
         
         this.props.updateCartSize(getCartSize());
+        swal({
+            title: "Added to Cart",
+            icon: "success",
+            timer: 2000
+        });
     }
 
     render() {

@@ -24,8 +24,8 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-toggleable-sm navbar-expand-sm navbar-light bg-light">
                 <Link to='/' className="navbar-brand" href="#">Nova</Link>
-                <button class="navbar-toggler collapsed" onClick={this.toggleNavigaiton} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">            
-                    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler collapsed" onClick={this.toggleNavigaiton} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">            
+                    <span className="navbar-toggler-icon"></span>
                 </button>
                 
                 <div className={`${toggled ? "navbar-collapse" : " collapse navbar-collapse"}`} id="navbarSupportedContent">
