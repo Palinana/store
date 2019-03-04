@@ -1,6 +1,6 @@
 ## E-commerce website selling furniture
 
-A fully functional fullstack e-commerce website built in React, Redux, Express and Sequelize.
+A fully functional fullstack e-commerce website built in React, Redux, Express, Sequelize and Stripe.
 
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/26104823/53595520-81fea700-3b6b-11e9-80f4-44dfea331bfb.gif)
 
