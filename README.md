@@ -15,3 +15,6 @@ A fully functional fullstack e-commerce website built in React, Redux, Express, 
 - Have their cart persist even if the tab is closed, or they log on to their account
 - Create an account with e-mail
 - Checkout using Stripe
+
+![image](https://user-images.githubusercontent.com/26104823/53846034-6afbf280-3f79-11e9-8939-c2ea77b6659b.png)
+![image](https://user-images.githubusercontent.com/26104823/53846040-6fc0a680-3f79-11e9-8059-60d4dc306022.png)
