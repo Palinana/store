@@ -20,3 +20,6 @@ A fully functional fullstack e-commerce website built in React, Redux, Express, 
 ![image](https://user-images.githubusercontent.com/26104823/53846040-6fc0a680-3f79-11e9-8059-60d4dc306022.png)
 ![image](https://user-images.githubusercontent.com/26104823/53909810-78b88300-4020-11e9-806f-c8dbe4ef13ad.png)
 ![image](https://user-images.githubusercontent.com/26104823/54055217-5c504e00-41ba-11e9-8951-2eef3c07e741.png)
+![image](https://user-images.githubusercontent.com/26104823/54088884-0c4bc580-4339-11e9-8d3a-44d78915a7ad.png)
+
+
