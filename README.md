@@ -8,6 +8,8 @@ A fully functional fullstack e-commerce website built in <b>React, Redux, Expres
 
 ![ezgif com-video-to-gif 1](https://user-images.githubusercontent.com/26104823/53595601-aeb2be80-3b6b-11e9-9bd7-bc216530d285.gif)
 
+<br/>
+
 ## **Users are able to:**
 
 - View all trips and filter them by category
