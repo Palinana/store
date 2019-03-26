@@ -1,4 +1,4 @@
-## E-commerce website selling furniture
+# E-commerce website selling furniture
 
 A fully functional fullstack e-commerce website built in <b>React, Redux, Express, Sequelize and Stripe</b>.
 
